@@ -53,22 +53,54 @@ Variables
   --clr-orange-8: hsl(13, 74%, 33%);
   --clr-orange-9: hsl(13, 73%, 25%);
   --clr-orange-10: hsl(13, 73%, 16%);
+  --clr-bg:var(--clr-white);
+  --form-font:var(--clr-black);
 }
 
 /* Styling for forms */
+.separator {
+  height:3px;
+  width: 100%;
+  background:  #064585;
+  display: block;
+  transform: scaleX(0) translateY(-2px);
+  transform-origin: 50%;
+  opacity: 0;
+  transition: all .15s linear;
+}
 
 .form {
-  background: var(--clr-grey-10);
-  max-width: 75%;
+  background-color:var(--clr-bg);
+  max-width: 100%;
   margin: 0 auto;
   padding: 1rem 2rem;
   border-radius: var(--radius);
 }
-.form input {
-  background: var(--clr-grey-9);
-  border-color: transparent;
-  border-radius: var(--radius);
+h3{
+  color:#064585;
+}
+.form-control input,.form-control select,form option {
+  background:var(--clr-bg);
+  /* border-color: transparent; */
+  /* border-radius: var(--radius); */
+  border:0px solid var(--form-font);
+  color: var(--form-font);;
   padding: 0.25rem 0.5rem;
+  border-bottom: 1px solid var(--form-font);
+  border-bottom-color: var(--form-font);
+}
+/* .form input:focus,form select:focus{
+  outline: none;
+  border-bottom: 2px solid white ;
+
+} */
+input:focus {
+  outline-color: transparent;
+  outline-style: none;
+}
+.form input[type="text"]:focus + .separator, .form input[type="password"]:focus + .separator {
+  transform: scaleX(1) translateY(-2px);
+  opacity: 1;
 }
 .form-control {
   margin: 0.5rem 0;
@@ -77,10 +109,16 @@ Variables
   grid-template-rows: auto auto;
   align-items:flex-start
 }
+.form-control label{
+  color: var(--form-font);
+  padding: 0.5rem;
+  color: #064585;
+  font-weight: 700;
+}
 .form button {
   display: inline-block;
   text-align: center;
-  background: rgb(24, 160, 248);
+  background: #064585;
   color: var(--clr-white);
   padding: 0.25rem 0.75rem;
   border-radius: var(--radius);
@@ -96,11 +134,12 @@ Variables
 }
 .form button:hover {
   color: #444;
+  background-color: white;
+  border: 1px solid #064585;
 }
 
 /* class for grouping inputs of same type */
 .grouping {
-  margin-top: 3rem;
   margin-bottom: 3em;
   display: grid;
   grid-template-columns: 50% 50%;

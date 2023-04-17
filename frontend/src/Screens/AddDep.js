@@ -101,6 +101,7 @@ const AddDep = () => {
               onChange={formik.handleChange("dept_name")}
               required
             />
+            <span class="separator"> </span>
           </div>
           <button type="submit">add department</button>
         </form>

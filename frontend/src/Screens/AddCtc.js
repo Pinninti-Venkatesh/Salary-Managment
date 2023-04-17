@@ -25,7 +25,7 @@ const AddCtc = () => {
     history.goBack();
   };
   const initialValues = {
-    ctc: 0,
+    ctc: "",
     basic_pay: 0,
     hra: 0,
     pf: 0,
@@ -58,6 +58,39 @@ const AddCtc = () => {
     initialValues,
     onSubmit,
   });
+  const handleCtcChange = (event) => {
+    const ctc=Number(event.target.value);
+    formik.setFieldValue("ctc", ctc);
+    const basic_pay=Number(parseFloat((ctc/100)*50).toFixed(2));
+    const hra=Number(parseFloat((ctc/100)*25).toFixed(2));
+    const pf=Number(parseFloat((ctc/100)*5).toFixed(2));
+    const health_care=Number(parseFloat((ctc/100)*5).toFixed(2));
+    const bonus=Number(parseFloat((ctc/100)*15).toFixed(2));
+    formik.setFieldValue("basic_pay",basic_pay );
+    formik.setFieldValue("hra",hra );
+    formik.setFieldValue("pf",pf );
+    formik.setFieldValue("health_care",health_care );
+    formik.setFieldValue("bonus",bonus );
+  };
+
+  const handleChange=async(event)=>{
+    let obj={};
+    obj[event.target.id]=event.target.value;
+    console.log(obj);
+    const values={...formik.values,...obj};
+    console.log(formik.values);
+    let ctc=0;
+    for(let prop in values){
+      formik.setFieldValue(prop,values[prop]);
+      console.log('prop',prop);
+      if(prop!='ctc'){
+        ctc+=Number(values[prop]);
+      }
+    }
+    console.log(ctc);
+   
+    formik.setFieldValue('ctc', Number(parseFloat(ctc).toFixed()));
+  }
   return (
     <>
       <div>
@@ -87,6 +120,9 @@ const AddCtc = () => {
           <img src={logo} alt="logo"></img>
         </header>
         <form className="form" onSubmit={formik.handleSubmit}>
+          <div className="grouping">
+
+         
           <div className="form-control">
             <label htmlFor="ctc">CTC </label>
             <input
@@ -94,7 +130,7 @@ const AddCtc = () => {
               id="ctc"
               name="ctc"
               value={formik.values.ctc}
-              onChange={formik.handleChange("ctc")}
+              onChange={handleCtcChange}
               required
             />
           </div>
@@ -105,7 +141,7 @@ const AddCtc = () => {
               id="basic_pay"
               name="basic_pay"
               value={formik.values.basic_pay}
-              onChange={formik.handleChange("basic_pay")}
+              onChange={handleChange}
               required
             />
           </div>
@@ -116,7 +152,7 @@ const AddCtc = () => {
               id="hra"
               name="hra"
               value={formik.values.hra}
-              onChange={formik.handleChange("hra")}
+              onChange={handleChange}
               required
             />
           </div>
@@ -127,7 +163,7 @@ const AddCtc = () => {
               id="pf"
               name="pf"
               value={formik.values.pf}
-              onChange={formik.handleChange("pf")}
+              onChange={handleChange}
               required
             />
           </div>
@@ -138,7 +174,7 @@ const AddCtc = () => {
               id="bonus"
               name="bonus"
               value={formik.values.bonus}
-              onChange={formik.handleChange("bonus")}
+              onChange={handleChange}
             />
           </div>
           <div className="form-control">
@@ -148,7 +184,7 @@ const AddCtc = () => {
               id="health_care"
               name="health_care"
               value={formik.values.health_care}
-              onChange={formik.handleChange("health_care")}
+              onChange={handleChange}
               required
             />
           </div>
@@ -159,8 +195,9 @@ const AddCtc = () => {
               id="stocks"
               name="stocks"
               value={formik.values.stocks}
-              onChange={formik.handleChange("stocks")}
+              onChange={handleChange}
             />
+          </div>
           </div>
           <button type="submit">Add CTC</button>
         </form>

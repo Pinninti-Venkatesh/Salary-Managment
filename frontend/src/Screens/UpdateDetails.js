@@ -60,7 +60,7 @@ const UpdateDetails = (props) => {
         console.log(res);
         setMessage(res.message);
         // console.log(res.data);
-        // handleClickOpen();
+        handleClickOpen();
       })
       .catch((err) => {
         console.error(err);
@@ -81,7 +81,7 @@ const UpdateDetails = (props) => {
         console.log(res);
         setMessage(res.message);
         // console.log(res.data);
-        // handleClickOpen();
+        handleClickOpen();
       })
       .catch((err) => {
         console.error(err);
@@ -294,7 +294,7 @@ const UpdateDetails = (props) => {
         console.log(res);
         setMessage(res.message);
         // console.log(res.data);
-        // handleClickOpen();
+        handleClickOpen();
       })
       .catch((err) => {
         console.error(err);
@@ -329,6 +329,7 @@ const UpdateDetails = (props) => {
           </DialogActions>
         </Dialog>
       </div>
+      <h1>Employee Details</h1>
       <div className="App">
         <form className="form" onSubmit={formik.handleSubmit}>
           <h3>Basic Details</h3>
@@ -345,6 +346,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("name")}
                 required
               />
+              <span class="separator"> </span>
             </div>
 
             <div className="form-control">
@@ -357,6 +359,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("dob")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="address">Address : </label>
@@ -368,6 +371,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("address")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="city">City : </label>
@@ -379,6 +383,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("city")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="state">State : </label>
@@ -390,6 +395,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("state")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="pincode" className="pincode">
@@ -404,6 +410,7 @@ const UpdateDetails = (props) => {
                 size="6"
                 maxLength="6"
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="pincode" className="experience">
@@ -418,6 +425,7 @@ const UpdateDetails = (props) => {
                 size="2"
                 maxLength="2"
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="phone">Phone : </label>
@@ -429,6 +437,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("phone")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="designation">designation : </label>
@@ -440,6 +449,7 @@ const UpdateDetails = (props) => {
                 onChange={formik.handleChange("designation")}
                 required
               />
+              <span class="separator"> </span>
             </div>
           </div>
           <h3>Company Details</h3>
@@ -510,6 +520,7 @@ const UpdateDetails = (props) => {
                 value={payrollFormik.values.basic_pay}
                 onChange={payrollFormik.handleChange("basic_pay")}
                 required
+                disabled
               />
             </div>
 
@@ -522,6 +533,7 @@ const UpdateDetails = (props) => {
                 value={payrollFormik.values.hra}
                 onChange={payrollFormik.handleChange("hra")}
                 required
+                disabled
               />
             </div>
             <div className="form-control">
@@ -682,13 +694,13 @@ const styles = {
     marginTop: "1%",
   },
   dropDown: {
-    width: window.innerWidth / 7.5,
-    height: window.innerHeight / 25,
-    backgroundColor: "hsl(212deg 33% 89%)",
-    borderWidth: 0,
-    borderColor: "black",
-    borderRadius: 5,
-    marginTop: "1%",
+    // width: window.innerWidth / 7.5,
+    // height: window.innerHeight / 25,
+    // backgroundColor: "hsl(212deg 33% 89%)",
+    // borderWidth: 0,
+    // borderColor: "black",
+    // borderRadius: 5,
+    // marginTop: "1%",
   },
 };
 export default UpdateDetails;

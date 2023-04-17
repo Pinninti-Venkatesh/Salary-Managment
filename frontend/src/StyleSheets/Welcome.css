@@ -1,10 +1,18 @@
 .App {
-  padding: 2em 3em 0;
+  padding: 2em 3em;
   background: url("../Assets/squares.png") no-repeat;
   background-position: 3em 9em;
   min-height: 80vh;
   font-family: "Lato", sans-serif;
   position: relative;
+}
+h1{
+  padding: 0 3em;
+  margin-bottom: 0;
+  text-align: center;
+}
+h2{
+  color:#064585
 }
 
 header {

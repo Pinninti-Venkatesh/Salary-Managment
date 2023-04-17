@@ -461,7 +461,7 @@ const createPayroll = async (req, res) => {
   ];
   try {
     const { rows } = await db.query(query, values);
-    return res.status(201).send({ message: "CTC Added" });
+    return res.status(201).send({ message: "Payroll issued for Employee" });
   } catch (err) {
     //console.log(err);
     // if (err.routine === "_bt_check_unique") {
@@ -502,8 +502,9 @@ const giveAppraisal = async (req, res) => {
     rows=rows[0];
     rows.basic_pay = parseFloat(rows.basic_pay) + ((parseFloat(rows.basic_pay) / 100) * hikePercent);
     rows.hra= parseFloat(rows.hra) + ((parseFloat(rows.hra) / 100) * hikePercent);
-    rows.ctc=parseFloat(rows.basic_pay)+parseFloat(rows.hra)+parseFloat(rows.pf)+parseFloat(rows.health_care)+parseFloat(rows.stocks);
-    rows.bonus=0;
+    rows.pf= parseFloat(rows.pf) + ((parseFloat(rows.pf) / 100) * hikePercent);
+    rows.hra= parseFloat(rows.hra) + ((parseFloat(rows.hra) / 100) * hikePercent);
+    rows.ctc=parseFloat(rows.basic_pay)+parseFloat(rows.hra)+parseFloat(rows.pf)+parseFloat(rows.health_care)+parseFloat(rows.stocks)+parseFloat(rows.bonus);
     const insertCTCQuery = `INSERT INTO ctc(
       id,
       emp_id,
@@ -513,7 +514,8 @@ const giveAppraisal = async (req, res) => {
       pf,
       health_care,
       stocks,
-      bonus)
+      bonus
+      )
       VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9) 
       returning *`;
     //console.log(req.body);

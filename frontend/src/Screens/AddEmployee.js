@@ -10,7 +10,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router-dom";
-
+import logo from "../Assets/Logo.png";
 const AddEmployee = () => {
   const [departmentsList, setDeplist] = useState([]);
   const [ctcList, setctcList] = useState([]);
@@ -120,7 +120,7 @@ const AddEmployee = () => {
           </DialogContent>
           <DialogActions>
             {/* <Button onClick={handleClose} color="primary">
-              Disagree
+              Disagreeadd
             </Button> */}
             <Button onClick={handleClose} color="primary" autoFocus>
               OK
@@ -128,11 +128,18 @@ const AddEmployee = () => {
           </DialogActions>
         </Dialog>
       </div>
+      
       <div className="App">
+      <header>
+          <h1>Salary Management System</h1>
+          <hr className="Underline" />
+          <img src={logo} alt="logo"></img>
+        </header>
         <form className="form" onSubmit={formik.handleSubmit}>
+        <h2>Add New Employee</h2>
           <div className="grouping">
             <h3>Basic Details</h3>
-            <hr className="Underline" />
+            <h3/>
             <div className="form-control">
               <label htmlFor="name">Name : </label>
               <input
@@ -143,6 +150,7 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("name")}
                 required
               />
+              <span class="separator"> </span>
             </div>
 
             <div className="form-control">
@@ -155,6 +163,7 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("dob")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="address">Address : </label>
@@ -166,6 +175,7 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("address")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="city">City : </label>
@@ -177,6 +187,7 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("city")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="state">State : </label>
@@ -188,6 +199,7 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("state")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="pincode" className="pincode">
@@ -202,6 +214,7 @@ const AddEmployee = () => {
                 size="6"
                 maxLength="6"
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="pincode" className="experience">
@@ -216,6 +229,7 @@ const AddEmployee = () => {
                 size="2"
                 maxLength="2"
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="phone">Phone : </label>
@@ -227,12 +241,13 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("phone")}
                 required
               />
+              <span class="separator"> </span>
             </div>
           </div>
 
           <div className="grouping">
             <h3>Company Details</h3>
-            <hr className="Underline" />
+            <h3 className="Underline" />
             <div className="form-control">
               <label htmlFor="org_name">Email : </label>
               <input
@@ -243,11 +258,12 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("email")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="dept_id">Department: </label>
               <select
-                style={styles.dropDown}
+                // style={styles.dropDown}
                 value={formik.values.dept_id}
                 onChange={formik.handleChange("dept_id")}
                 required
@@ -258,7 +274,7 @@ const AddEmployee = () => {
             <div className="form-control">
               <label htmlFor="ctc_id">CTC-ID : </label>
               <select
-                style={styles.dropDown}
+                // style={styles.dropDown}
                 value={formik.values.ctc_id}
                 onChange={formik.handleChange("ctc_id")}
                 required
@@ -276,6 +292,7 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("designation")}
                 required
               />
+              <span class="separator"> </span>
             </div>
             <div className="form-control">
               <label htmlFor="doj">doj : </label>
@@ -288,10 +305,11 @@ const AddEmployee = () => {
                 onChange={formik.handleChange("doj")}
                 required
               />
+              <span class="separator"> </span>
             </div>
           </div>
           <button type="submit" onClick={formik.handleSubmit}>
-            Add
+            Add Employee
           </button>
         </form>
       </div>
